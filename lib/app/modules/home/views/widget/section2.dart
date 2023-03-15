@@ -1,36 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:misr/app/modules/home/views/home_view.dart';
 import 'package:misr/app/modules/home/views/widget/category_item.dart';
 
-SingleChildScrollView section2() {
+SingleChildScrollView section2({required List<CategoryItem> categoryItems}) {
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
-      children: [
-        categoryItem(
-          image: "asset/open-book.png",
-          title: "Education",
-        ),
-        categoryItem(
-          image: "asset/statistic.png",
-          title: "Life",
-        ),
-        categoryItem(
-          image: "asset/open-book.png",
-          title: "Education",
-        ),
-        categoryItem(
-          image: "asset/statistic.png",
-          title: "Life",
-        ),
-        categoryItem(
-          image: "asset/open-book.png",
-          title: "Education",
-        ),
-        categoryItem(
-          image: "asset/statistic.png",
-          title: "Life",
-        ),
-      ],
+      children: List.generate(categoryItems.length, (index) {
+        return categoryItem(
+          image: categoryItems.elementAt(index).image,
+          title: categoryItems.elementAt(index).title,
+        );
+      }),
     ),
   );
 }
